@@ -1,0 +1,13 @@
+Microsoft Visual Studio Solution File, Format Version 1.00
+Project("{66355F20-A65B-11D0-BFB5-00A0C91EBFA0}") = "RDCOMInteropTest", "RDCOMInteropTest.vjp", "{A48109B3-4E28-4632-BBE8-7BB2B3C9550D}"
+EndProject
+Global
+	GlobalSection(LocalDeployment) = postSolution
+		StartupProject = {A48109B3-4E28-4632-BBE8-7BB2B3C9550D}
+	EndGlobalSection
+	GlobalSection(BuildOrder) = postSolution
+		0 = {A48109B3-4E28-4632-BBE8-7BB2B3C9550D}
+	EndGlobalSection
+	GlobalSection(DeploymentRoot) = postSolution
+	EndGlobalSection
+EndGlobal

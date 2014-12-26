@@ -1,0 +1,51 @@
+* Simple testing calculation server.
+* Usage: in: 4+5
+*        out: 9
+* Supported commands: +-*/
+
+$ENTRY Go {
+	= <StoreRes <Main>>;
+}
+StoreRes
+{
+        e.1 = <Prout e.1>
+}
+
+Test {=}
+
+Main
+{
+* = <Test>;	
+*	 = <Process <MainLoopMultiline <Card>>>;
+	 = <MainLoop <Card>>;	 
+}
+
+MainLoopMultiline
+{
+    e.1 0 = <PreProcess e.1>;
+    e.1 = <PreProcess e.1><MainLoopMultiline <Card>>;
+}
+
+MainLoop
+{
+        e.1 0 = <Process <PreProcess e.1>>;
+        e.1 =   <Process <PreProcess e.1>><MainLoop <Card>>;
+}
+
+
+
+PreProcess
+{
+    e.1 '+' e.2 = (Add (<Numb e.1>) (<Numb e.2>));
+    e.1 '-' e.2 = (Sub (<Numb e.1>) (<Numb e.2>));
+    e.1 '*' e.2 = (Mul (<Numb e.1>) (<Numb e.2>));
+    e.1 '/' e.2 = (Div (<Numb e.1>) (<Numb e.2>));
+    e.1 = e.1
+}
+
+Process {=;
+    (s.Cmd (s.1) (s.2))e.Nxt = <Mu s.Cmd s.1 s.2><Process e.Nxt>;
+*    e.1 = '\nInvalid input: ' e.1 '\n';
+}
+
+
